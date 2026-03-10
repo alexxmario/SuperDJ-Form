@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect } from 'react'
 import Image from 'next/image'
 import { StepIndicator } from './StepIndicator'
 import { Button } from '@/components/ui/Button'
-import { ArrowLeft, ArrowRight, Check, Lock, Save } from 'lucide-react'
+import { ArrowLeft, ArrowRight, Check, Lock, Save, PartyPopper, Music, Calendar } from 'lucide-react'
 import { cn, isEventLocked, getDaysUntilLock } from '@/lib/utils'
 import { FormData, defaultFormData } from '@/lib/schemas'
 
@@ -36,6 +36,7 @@ export function FormWizard({ token, initialData, eventDate, onSave }: FormWizard
   const [formData, setFormData] = useState<FormData>(initialData || defaultFormData)
   const [isSaving, setIsSaving] = useState(false)
   const [lastSaved, setLastSaved] = useState<Date | null>(null)
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const isLocked = eventDate ? isEventLocked(eventDate) : false
   const daysUntilLock = eventDate ? getDaysUntilLock(eventDate) : null
@@ -86,6 +87,7 @@ export function FormWizard({ token, initialData, eventDate, onSave }: FormWizard
       try {
         await onSave(formData)
         setLastSaved(new Date())
+        setIsSubmitted(true)
       } catch (error) {
         console.error('Save error:', error)
       } finally {
@@ -141,6 +143,67 @@ export function FormWizard({ token, initialData, eventDate, onSave }: FormWizard
       default:
         return null
     }
+  }
+
+  // Success screen after form submission
+  if (isSubmitted) {
+    return (
+      <div className="min-h-screen flex items-center justify-center px-4 bg-gradient-to-b from-white to-gray-50">
+        <div className="max-w-md w-full text-center space-y-8 animate-fade-in">
+          {/* Success Icon */}
+          <div className="relative mx-auto w-24 h-24">
+            <div className="absolute inset-0 bg-emerald-500/20 rounded-full animate-ping" />
+            <div className="relative w-24 h-24 bg-gradient-to-br from-emerald-400 to-emerald-600 rounded-full flex items-center justify-center shadow-lg shadow-emerald-500/30">
+              <Check className="w-12 h-12 text-white" />
+            </div>
+          </div>
+
+          {/* Message */}
+          <div className="space-y-3">
+            <h1 className="text-3xl font-bold text-gray-900">
+              Formular Trimis!
+            </h1>
+            <p className="text-gray-600">
+              Preferințele tale muzicale au fost salvate cu succes. DJ-ul tău le va primi și va pregăti playlist-ul perfect pentru eveniment.
+            </p>
+          </div>
+
+          {/* Event Info Card */}
+          {formData.eventDetails.eventDate && (
+            <div className="bg-white rounded-2xl border border-gray-200 p-6 shadow-sm">
+              <div className="flex items-center justify-center gap-3 text-gray-700">
+                <Calendar className="w-5 h-5 text-[#ee1e45]" />
+                <span className="font-medium">
+                  {new Date(formData.eventDetails.eventDate).toLocaleDateString('ro-RO', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  })}
+                </span>
+              </div>
+            </div>
+          )}
+
+          {/* Fun decoration */}
+          <div className="flex justify-center gap-3">
+            <PartyPopper className="w-6 h-6 text-[#ee1e45] animate-bounce" style={{ animationDelay: '0s' }} />
+            <Music className="w-6 h-6 text-[#8fb23e] animate-bounce" style={{ animationDelay: '0.1s' }} />
+            <PartyPopper className="w-6 h-6 text-[#ee1e45] animate-bounce" style={{ animationDelay: '0.2s' }} />
+          </div>
+
+          {/* Back button */}
+          <Button
+            variant="secondary"
+            onClick={() => setIsSubmitted(false)}
+            className="mt-4"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Înapoi la formular
+          </Button>
+        </div>
+      </div>
+    )
   }
 
   return (
