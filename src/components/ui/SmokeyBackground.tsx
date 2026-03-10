@@ -14,7 +14,8 @@ precision mediump float;
 uniform vec2 iResolution;
 uniform float iTime;
 uniform vec2 iMouse;
-uniform vec3 u_color;
+uniform vec3 u_color1;
+uniform vec3 u_color2;
 
 void mainImage(out vec4 fragColor, in vec2 fragCoord){
     vec2 uv = fragCoord / iResolution;
@@ -34,7 +35,10 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
     float wave = abs(sin(distortion.x + distortion.y + time));
     float glow = smoothstep(0.9, 0.2, wave);
 
-    fragColor = vec4(u_color * glow, 1.0);
+    float blend = sin(time * 0.3 + distortion.x * 2.0) * 0.5 + 0.5;
+    vec3 color = mix(u_color1, u_color2, blend);
+
+    fragColor = vec4(color * glow, 1.0);
 }
 
 void main() {
@@ -47,6 +51,7 @@ type BlurSize = "none" | "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
 interface SmokeyBackgroundProps {
   backdropBlurAmount?: string;
   color?: string;
+  color2?: string;
   className?: string;
 }
 
@@ -62,7 +67,8 @@ const blurClassMap: Record<BlurSize, string> = {
 
 export function SmokeyBackground({
   backdropBlurAmount = "sm",
-  color = "#1E40AF",
+  color = "#FF00FF",
+  color2 = "#39FF14",
   className = "",
 }: SmokeyBackgroundProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -127,11 +133,14 @@ export function SmokeyBackground({
     const iResolutionLocation = gl.getUniformLocation(program, "iResolution");
     const iTimeLocation = gl.getUniformLocation(program, "iTime");
     const iMouseLocation = gl.getUniformLocation(program, "iMouse");
-    const uColorLocation = gl.getUniformLocation(program, "u_color");
+    const uColor1Location = gl.getUniformLocation(program, "u_color1");
+    const uColor2Location = gl.getUniformLocation(program, "u_color2");
 
     const startTime = Date.now();
-    const [r, g, b] = hexToRgb(color);
-    gl.uniform3f(uColorLocation, r, g, b);
+    const [r1, g1, b1] = hexToRgb(color);
+    const [r2, g2, b2] = hexToRgb(color2);
+    gl.uniform3f(uColor1Location, r1, g1, b1);
+    gl.uniform3f(uColor2Location, r2, g2, b2);
 
     let animationId: number;
 
@@ -171,7 +180,7 @@ export function SmokeyBackground({
       canvas.removeEventListener("mouseenter", handleMouseEnter);
       canvas.removeEventListener("mouseleave", handleMouseLeave);
     };
-  }, [isHovering, mousePosition, color]);
+  }, [isHovering, mousePosition, color, color2]);
 
   const finalBlurClass = blurClassMap[backdropBlurAmount as BlurSize] || blurClassMap["sm"];
 

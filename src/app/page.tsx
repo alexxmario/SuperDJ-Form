@@ -54,7 +54,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-gray-950">
-      <SmokeyBackground color="#EAB308" backdropBlurAmount="sm" />
+      <SmokeyBackground color="#FF00FF" color2="#39FF14" backdropBlurAmount="sm" />
 
       <div className="relative z-10 w-full max-w-sm space-y-8">
         {/* Logo */}
@@ -84,13 +84,13 @@ export default function HomePage() {
                 id="floating_email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-fuchsia-500 peer"
                 placeholder=" "
                 required
               />
               <label
                 htmlFor="floating_email"
-                className="absolute text-sm text-gray-300 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-yellow-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="absolute text-sm text-gray-300 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-fuchsia-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 <User className="inline-block mr-2 -mt-1" size={16} />
                 Adresa de email
@@ -104,13 +104,13 @@ export default function HomePage() {
                 id="floating_password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-fuchsia-500 peer"
                 placeholder=" "
                 required
               />
               <label
                 htmlFor="floating_password"
-                className="absolute text-sm text-gray-300 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-yellow-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+                className="absolute text-sm text-gray-300 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-fuchsia-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
               >
                 <Lock className="inline-block mr-2 -mt-1" size={16} />
                 Parola
@@ -126,7 +126,7 @@ export default function HomePage() {
             <button
               type="submit"
               disabled={isLoading}
-              className="group w-full flex items-center justify-center py-3 px-4 bg-yellow-500 hover:bg-yellow-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg text-gray-900 font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-yellow-500 transition-all duration-300"
+              className="group w-full flex items-center justify-center py-3 px-4 bg-fuchsia-500 hover:bg-fuchsia-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg text-white font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-fuchsia-500 transition-all duration-300"
             >
               {isLoading ? 'Se conectează...' : 'Conectare'}
               {!isLoading && <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />}
