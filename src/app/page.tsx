@@ -58,14 +58,15 @@ export default function HomePage() {
 
       <div className="relative z-10 w-full max-w-sm space-y-8">
         {/* Logo */}
-        <div className="text-center">
+        <div className="text-center pt-4">
           <Image
             src="https://www.superdj.ro/static/img/logo.png?v=2"
             alt="Super DJ"
-            width={180}
-            height={100}
-            className="h-20 w-auto mx-auto object-contain"
+            width={200}
+            height={120}
+            className="w-48 h-auto mx-auto"
             priority
+            unoptimized
           />
         </div>
 
