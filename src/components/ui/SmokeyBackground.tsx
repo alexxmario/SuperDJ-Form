@@ -38,7 +38,8 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord){
     float blend = sin(time * 0.3 + distortion.x * 2.0) * 0.5 + 0.5;
     vec3 color = mix(u_color1, u_color2, blend);
 
-    fragColor = vec4(color * glow, 1.0);
+    vec3 finalColor = mix(vec3(1.0), color, glow);
+    fragColor = vec4(finalColor, 1.0);
 }
 
 void main() {
