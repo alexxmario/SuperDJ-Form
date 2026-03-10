@@ -66,7 +66,7 @@ export default function AdminLayout({
 
   const navItems = [
     { href: '/admin', label: 'Evenimente', icon: Calendar },
-    { href: '/admin/djs', label: 'DJ-i', icon: Users },
+    { href: '/admin/djs', label: 'DJs', icon: Users },
   ]
 
   return (

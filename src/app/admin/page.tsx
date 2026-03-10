@@ -156,7 +156,7 @@ export default function AdminEventsPage() {
             Evenimente
           </h1>
           <p className="text-text-secondary mt-1">
-            Gestionează toate evenimentele și atribuie DJ-i
+            Gestionează toate evenimentele și atribuie DJs
           </p>
         </div>
 
@@ -191,7 +191,7 @@ export default function AdminEventsPage() {
             const now = new Date()
             return d.getMonth() === now.getMonth() && d.getFullYear() === now.getFullYear()
           }).length, icon: Clock },
-          { label: 'DJ-i Activi', value: djs.length, icon: Users },
+          { label: 'DJs Activi', value: djs.length, icon: Users },
         ].map((stat, index) => (
           <div key={index} className="p-4 bg-surface border border-surface-border rounded-xl">
             <div className="flex items-center gap-3">
