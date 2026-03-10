@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import Image from 'next/image'
 import { User, Lock, ArrowRight } from 'lucide-react'
 import { SmokeyBackground } from '@/components/ui/SmokeyBackground'
 
@@ -57,19 +56,6 @@ export default function HomePage() {
       <SmokeyBackground color="#ee1e45" color2="#8fb23e" backdropBlurAmount="md" />
 
       <div className="relative z-10 w-full max-w-sm space-y-8">
-        {/* Logo */}
-        <div className="text-center pt-4">
-          <Image
-            src="https://www.superdj.ro/static/img/logo.png?v=2"
-            alt="Super DJ"
-            width={200}
-            height={120}
-            className="w-48 h-auto mx-auto"
-            priority
-            unoptimized
-          />
-        </div>
-
         {/* Login Form */}
         <div className="w-full p-8 space-y-6 bg-white/80 backdrop-blur-lg rounded-2xl border border-gray-200 shadow-xl">
           <div className="text-center">
