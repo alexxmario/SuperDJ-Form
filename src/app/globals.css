@@ -59,16 +59,30 @@ body {
 }
 
 /* Form field styles */
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="number"],
-input[type="date"],
-input[type="time"],
-input[type="url"],
-select,
-textarea {
+input[type="text"]:not(.input-transparent),
+input[type="email"]:not(.input-transparent),
+input[type="tel"]:not(.input-transparent),
+input[type="number"]:not(.input-transparent),
+input[type="date"]:not(.input-transparent),
+input[type="time"]:not(.input-transparent),
+input[type="url"]:not(.input-transparent),
+select:not(.input-transparent),
+textarea:not(.input-transparent) {
   @apply bg-surface border border-surface-border rounded-xl px-4 py-3.5 text-text-primary placeholder-text-muted transition-all duration-300;
+}
+
+/* Transparent input for light backgrounds */
+.input-transparent {
+  background-color: transparent !important;
+}
+
+/* Autofill styles for light theme */
+.input-transparent:-webkit-autofill,
+.input-transparent:-webkit-autofill:hover,
+.input-transparent:-webkit-autofill:focus {
+  -webkit-box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: #111827 !important;
+  background-color: transparent !important;
 }
 
 input:focus,
