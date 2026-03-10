@@ -3,9 +3,8 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import Image from 'next/image'
-import { Button } from '@/components/ui/Button'
-import { Input } from '@/components/ui/Input'
-import { LogIn } from 'lucide-react'
+import { User, Lock, ArrowRight } from 'lucide-react'
+import { SmokeyBackground } from '@/components/ui/SmokeyBackground'
 
 export default function HomePage() {
   const router = useRouter()
@@ -14,7 +13,6 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
-  // Check if already logged in
   useEffect(() => {
     const stored = localStorage.getItem('dj_session')
     if (stored) {
@@ -55,11 +53,10 @@ export default function HomePage() {
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center px-4">
-      {/* Background */}
-      <div className="fixed inset-0 bg-[radial-gradient(ellipse_at_top,rgba(234,179,8,0.06),transparent_50%)]" />
+    <div className="min-h-screen flex items-center justify-center px-4 bg-gray-950">
+      <SmokeyBackground color="#EAB308" backdropBlurAmount="sm" />
 
-      <div className="relative w-full max-w-sm space-y-8">
+      <div className="relative z-10 w-full max-w-sm space-y-8">
         {/* Logo */}
         <div className="text-center">
           <Image
@@ -73,63 +70,79 @@ export default function HomePage() {
         </div>
 
         {/* Login Form */}
-        <div className="bg-surface/50 backdrop-blur-xl border border-surface-border rounded-2xl p-6 space-y-6">
+        <div className="w-full p-8 space-y-6 bg-white/10 backdrop-blur-lg rounded-2xl border border-white/20 shadow-2xl">
           <div className="text-center">
-            <h1 className="font-display text-xl font-semibold text-text-primary">
-              Conectare
-            </h1>
-            <p className="text-sm text-text-muted mt-1">
-              Accesează dashboard-ul tău
-            </p>
+            <h2 className="text-3xl font-bold text-white">Bine ai revenit</h2>
+            <p className="mt-2 text-sm text-gray-300">Conectează-te pentru a continua</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
-            <Input
-              label="Email"
-              type="email"
-              placeholder="email@superdj.ro"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+          <form onSubmit={handleSubmit} className="space-y-8">
+            {/* Email Input with Animated Label */}
+            <div className="relative z-0">
+              <input
+                type="email"
+                id="floating_email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                placeholder=" "
+                required
+              />
+              <label
+                htmlFor="floating_email"
+                className="absolute text-sm text-gray-300 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-yellow-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                <User className="inline-block mr-2 -mt-1" size={16} />
+                Adresa de email
+              </label>
+            </div>
 
-            <Input
-              label="Parolă"
-              type="password"
-              placeholder="••••••••"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+            {/* Password Input with Animated Label */}
+            <div className="relative z-0">
+              <input
+                type="password"
+                id="floating_password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                className="block py-2.5 px-0 w-full text-sm text-white bg-transparent border-0 border-b-2 border-gray-300 appearance-none focus:outline-none focus:ring-0 focus:border-yellow-500 peer"
+                placeholder=" "
+                required
+              />
+              <label
+                htmlFor="floating_password"
+                className="absolute text-sm text-gray-300 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-yellow-400 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6"
+              >
+                <Lock className="inline-block mr-2 -mt-1" size={16} />
+                Parola
+              </label>
+            </div>
 
             {error && (
-              <div className="p-3 bg-red-500/10 border border-red-500/20 rounded-xl">
+              <div className="p-3 bg-red-500/20 border border-red-500/30 rounded-xl">
                 <p className="text-sm text-red-400 text-center">{error}</p>
               </div>
             )}
 
-            <Button
+            <button
               type="submit"
-              variant="primary"
-              size="lg"
-              className="w-full"
-              isLoading={isLoading}
+              disabled={isLoading}
+              className="group w-full flex items-center justify-center py-3 px-4 bg-yellow-500 hover:bg-yellow-600 disabled:opacity-50 disabled:cursor-not-allowed rounded-lg text-gray-900 font-semibold focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-yellow-500 transition-all duration-300"
             >
-              <LogIn className="w-5 h-5" />
-              Conectare
-            </Button>
+              {isLoading ? 'Se conectează...' : 'Conectare'}
+              {!isLoading && <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />}
+            </button>
           </form>
         </div>
 
         {/* Demo info */}
         <div className="text-center space-y-2">
-          <p className="text-xs text-text-muted">Demo: orice parolă funcționează</p>
+          <p className="text-xs text-gray-400">Demo: orice parolă funcționează</p>
           <div className="flex justify-center gap-4 text-xs">
-            <span className="text-text-muted">
-              Admin: <span className="text-text-secondary">admin@superdj.ro</span>
+            <span className="text-gray-400">
+              Admin: <span className="text-gray-300">admin@superdj.ro</span>
             </span>
-            <span className="text-text-muted">
-              DJ: <span className="text-text-secondary">dj@superdj.ro</span>
+            <span className="text-gray-400">
+              DJ: <span className="text-gray-300">dj@superdj.ro</span>
             </span>
           </div>
         </div>
