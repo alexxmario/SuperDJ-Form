@@ -54,7 +54,7 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-4 bg-white">
-      <SmokeyBackground color="#FF00FF" color2="#39FF14" backdropBlurAmount="md" />
+      <SmokeyBackground color="#4C1D95" color2="#7C3AED" backdropBlurAmount="md" />
 
       <div className="relative z-10 w-full max-w-sm space-y-8">
         {/* Logo */}
