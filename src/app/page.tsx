@@ -63,8 +63,8 @@ export default function HomePage() {
             src="https://www.superdj.ro/static/img/logo.png?v=2"
             alt="Super DJ"
             width={180}
-            height={60}
-            className="h-12 w-auto mx-auto"
+            height={100}
+            className="h-20 w-auto mx-auto object-contain"
             priority
           />
         </div>
