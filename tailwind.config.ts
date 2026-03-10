@@ -9,30 +9,37 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        // Super DJ Brand Colors - Premium dark with gold accents
+        // Super DJ Brand Colors - Light theme with pink/green accents
         background: {
-          DEFAULT: '#09090b',
-          secondary: '#0c0c0f',
-          tertiary: '#18181b',
+          DEFAULT: '#ffffff',
+          secondary: '#f9fafb',
+          tertiary: '#f3f4f6',
         },
         accent: {
-          DEFAULT: '#eab308', // Gold
-          hover: '#facc15',
-          light: '#fcd34d',
-          muted: '#854d0e',
-          dark: '#713f12',
+          DEFAULT: '#ee1e45', // Pink
+          hover: '#dc1b3f',
+          light: '#f43f5e',
+          muted: '#fecdd3',
+          dark: '#be123c',
+        },
+        'accent-green': {
+          DEFAULT: '#8fb23e', // Green
+          hover: '#7da035',
+          light: '#a3c45a',
+          muted: '#d9f99d',
+          dark: '#6b8c2a',
         },
         surface: {
-          DEFAULT: '#18181b',
-          hover: '#27272a',
-          border: '#3f3f46',
-          elevated: '#1c1c1f',
+          DEFAULT: '#ffffff',
+          hover: '#f9fafb',
+          border: '#e5e7eb',
+          elevated: '#ffffff',
         },
         text: {
-          primary: '#fafafa',
-          secondary: '#a1a1aa',
-          muted: '#71717a',
-          accent: '#eab308',
+          primary: '#111827',
+          secondary: '#4b5563',
+          muted: '#9ca3af',
+          accent: '#ee1e45',
         },
       },
       fontFamily: {
@@ -43,16 +50,16 @@ const config: Config = {
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-        'gradient-gold': 'linear-gradient(135deg, #eab308 0%, #fcd34d 50%, #eab308 100%)',
-        'glow': 'radial-gradient(ellipse at center, rgba(234, 179, 8, 0.12) 0%, transparent 70%)',
-        'hero': 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(234, 179, 8, 0.1) 0%, transparent 60%)',
+        'gradient-accent': 'linear-gradient(135deg, #ee1e45 0%, #8fb23e 100%)',
+        'glow': 'radial-gradient(ellipse at center, rgba(238, 30, 69, 0.08) 0%, transparent 70%)',
+        'hero': 'radial-gradient(ellipse 80% 50% at 50% -20%, rgba(143, 178, 62, 0.08) 0%, transparent 60%)',
       },
       boxShadow: {
-        'glow-sm': '0 0 20px rgba(234, 179, 8, 0.15)',
-        'glow': '0 0 40px rgba(234, 179, 8, 0.2)',
-        'glow-lg': '0 0 60px rgba(234, 179, 8, 0.25), 0 0 20px rgba(234, 179, 8, 0.15)',
-        'card': '0 4px 24px rgba(0, 0, 0, 0.4)',
-        'card-hover': '0 8px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(234, 179, 8, 0.08)',
+        'glow-sm': '0 0 20px rgba(238, 30, 69, 0.1)',
+        'glow': '0 0 40px rgba(238, 30, 69, 0.15)',
+        'glow-lg': '0 0 60px rgba(238, 30, 69, 0.2), 0 0 20px rgba(143, 178, 62, 0.1)',
+        'card': '0 4px 24px rgba(0, 0, 0, 0.08)',
+        'card-hover': '0 8px 40px rgba(0, 0, 0, 0.12), 0 0 30px rgba(238, 30, 69, 0.05)',
       },
       animation: {
         'fade-in': 'fadeIn 0.4s ease-out forwards',
@@ -92,8 +99,8 @@ const config: Config = {
           '100%': { opacity: '1', transform: 'translateX(0)' },
         },
         glow: {
-          '0%': { boxShadow: '0 0 20px rgba(234, 179, 8, 0.2)' },
-          '100%': { boxShadow: '0 0 40px rgba(234, 179, 8, 0.4)' },
+          '0%': { boxShadow: '0 0 20px rgba(238, 30, 69, 0.15)' },
+          '100%': { boxShadow: '0 0 40px rgba(238, 30, 69, 0.25)' },
         },
         float: {
           '0%, 100%': { transform: 'translateY(0)' },

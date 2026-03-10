@@ -72,7 +72,7 @@ export default function AdminLayout({
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-xl border-b border-surface-border/50">
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -82,13 +82,13 @@ export default function AdminLayout({
                 alt="Super DJ"
                 width={120}
                 height={40}
-                className="h-8 w-auto brightness-0 invert"
+                className="h-8 w-auto"
               />
               <div className="hidden sm:flex items-center gap-2">
-                <div className="h-6 w-px bg-surface-border" />
-                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 border border-accent/20">
-                  <Shield className="w-3.5 h-3.5 text-accent" />
-                  <span className="text-xs font-semibold text-accent">Admin</span>
+                <div className="h-6 w-px bg-gray-200" />
+                <div className="flex items-center gap-2 px-3 py-1 rounded-full bg-[#ee1e45]/10 border border-[#ee1e45]/20">
+                  <Shield className="w-3.5 h-3.5 text-[#ee1e45]" />
+                  <span className="text-xs font-semibold text-[#ee1e45]">Admin</span>
                 </div>
               </div>
             </Link>
@@ -102,8 +102,8 @@ export default function AdminLayout({
                   className={cn(
                     'flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-all duration-200',
                     pathname === item.href
-                      ? 'bg-accent/10 text-accent border border-accent/20'
-                      : 'text-text-secondary hover:text-text-primary hover:bg-surface/50'
+                      ? 'bg-[#ee1e45]/10 text-[#ee1e45] border border-[#ee1e45]/20'
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                   )}
                 >
                   <item.icon className="w-4 h-4" />
@@ -114,13 +114,13 @@ export default function AdminLayout({
 
             {/* User */}
             <div className="flex items-center gap-4">
-              <div className="hidden sm:flex items-center gap-3 px-4 py-2 bg-surface/50 rounded-xl border border-surface-border/50">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-accent to-accent-light flex items-center justify-center">
-                  <Settings className="w-4 h-4 text-black" />
+              <div className="hidden sm:flex items-center gap-3 px-4 py-2 bg-gray-50 rounded-xl border border-gray-200">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#ee1e45] to-[#8fb23e] flex items-center justify-center">
+                  <Settings className="w-4 h-4 text-white" />
                 </div>
                 <div className="text-sm">
-                  <p className="font-medium text-text-primary">{session.name}</p>
-                  <p className="text-xs text-accent font-medium">Administrator</p>
+                  <p className="font-medium text-gray-900">{session.name}</p>
+                  <p className="text-xs text-[#ee1e45] font-medium">Administrator</p>
                 </div>
               </div>
 

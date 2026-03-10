@@ -66,7 +66,7 @@ export default function DashboardLayout({
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="sticky top-0 z-50 bg-background/90 backdrop-blur-xl border-b border-surface-border/50">
+      <header className="sticky top-0 z-50 bg-white/90 backdrop-blur-xl border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
@@ -76,12 +76,12 @@ export default function DashboardLayout({
                 alt="Super DJ"
                 width={120}
                 height={40}
-                className="h-8 w-auto brightness-0 invert"
+                className="h-8 w-auto"
               />
-              <div className="h-6 w-px bg-surface-border hidden sm:block" />
+              <div className="h-6 w-px bg-gray-200 hidden sm:block" />
               <div className="hidden sm:block">
-                <p className="text-sm font-medium text-text-primary">Dashboard DJ</p>
-                <p className="text-xs text-text-muted">Evenimentele tale</p>
+                <p className="text-sm font-medium text-gray-900">Dashboard DJ</p>
+                <p className="text-xs text-gray-500">Evenimentele tale</p>
               </div>
             </Link>
 
@@ -89,7 +89,7 @@ export default function DashboardLayout({
             <nav className="hidden sm:flex items-center gap-6">
               <Link
                 href="/dashboard"
-                className="flex items-center gap-2 text-sm text-text-secondary hover:text-accent transition-colors"
+                className="flex items-center gap-2 text-sm text-gray-600 hover:text-[#8fb23e] transition-colors"
               >
                 <Calendar className="w-4 h-4" />
                 Evenimentele Mele
@@ -98,13 +98,13 @@ export default function DashboardLayout({
 
             {/* User */}
             <div className="flex items-center gap-4">
-              <div className="hidden sm:flex items-center gap-3 px-4 py-2 bg-surface/50 rounded-xl border border-surface-border/50">
-                <div className="w-8 h-8 rounded-lg bg-accent/20 flex items-center justify-center">
-                  <User className="w-4 h-4 text-accent" />
+              <div className="hidden sm:flex items-center gap-3 px-4 py-2 bg-gray-50 rounded-xl border border-gray-200">
+                <div className="w-8 h-8 rounded-lg bg-[#8fb23e]/20 flex items-center justify-center">
+                  <User className="w-4 h-4 text-[#8fb23e]" />
                 </div>
                 <div className="text-sm">
-                  <p className="font-medium text-text-primary">{session.name}</p>
-                  <p className="text-xs text-text-muted">{session.email}</p>
+                  <p className="font-medium text-gray-900">{session.name}</p>
+                  <p className="text-xs text-gray-500">{session.email}</p>
                 </div>
               </div>
 
